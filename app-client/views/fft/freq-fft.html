@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>DSP Application</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   <div id="sidebar" class="sidebar">
+    <section class="section dashboard">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">History</div>
+        </div>
+        <div class="card-body">
+          <div class="row pt-4">
+            <div class="card-text">No. <span id="no"></span></div>
+          </div>
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(0)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(0)</div>
+            </div>
+            <div class="row">
+              <div id="x0_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2"></div>
+              <div id="X0_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(1)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(4)</div>
+            </div>
+            <div class="row">
+              <div id="x1_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2"></div>
+              <div id="X4_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(2)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(2)</div>
+            </div>
+            <div class="row">
+              <div id="x2_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2"></div>
+              <div id="X2_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(3)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(6)</div>
+            </div>
+            <div class="row">
+              <div id="x3_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2 text-start"><span class="icon bi-arrow-right-circle"></span></div>
+              <div id="X6_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(4)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(1)</div>
+            </div>
+            <div class="row">
+              <div id="x4_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2"></div>
+              <div id="X1_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(5)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(5)</div>
+            </div>
+            <div class="row">
+              <div id="x5_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2"></div>
+              <div id="X5_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(6)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(3)</div>
+            </div>
+            <div class="row">
+              <div id="x6_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2"></div>
+              <div id="X3_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+
+          <div class="row pt-3">
+            <div class="row">
+              <div class="col-md-3 text-start">x(7)</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-7 text-start">X(7)</div>
+            </div>
+            <div class="row">
+              <div id="x7_hst" class="col-md-3 text-start text-success"></div>
+              <div class="col-md-2"></div>
+              <div id="X7_hst" class="col-md-7 text-start text-danger"></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-danger mt-2" style="font-size: 0.8em;" onclick="viewDetail()">View</button>
+         
+        </div>
+      </div>
+    </section>
+   
+
+  </div>
+
+  <main id="main" class="main" >
+
+    <div class="pagetitle d-flex justify-content-between">
+      <div>
+        <h1>FFT</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-item active">FFT</li>
+            <li class="breadcrumb-item active">Frequency FFT</li>
+          </ol>
+        </nav>
+      </div>
+      
+      <div>
+        <a class="link-primary" href="../index.html"><span class="icon bi-arrow-left-circle fs-1"></span></a>
+      </div>
+    </div><!-- End Page Title -->
+    <section class="section dashboard">
+      <form id="time-fft-form">
+        <div style="width: 1080px; height: 627px;background-image: url('/assets/img/freqfft.png'); background-size: cover;">
+          <div class="card-text pt-1">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class="tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T00" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T01" class="tooltiptext"></span>
+                        </div>
+                         
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T02" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T03" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T04" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T05" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T06" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T07" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_0" id="x_0">
+                <div id="x_0_text" class="text-center p-1 bold text-bg-success text_ visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                  <div id="X_0" class="text-center bold p-1 text-bg-danger visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-text pt-1">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T10" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T11" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T12" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T13" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T14" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T15" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T16" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W08">1</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T17" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_1" id="x_1">
+                <div id="x_1_text" class="text-center bold text-bg-success text_ visually-hidden p-1" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                <div id="X_4" class="text-center bold text-bg-danger p-1 visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-text pt-1">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T20" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T21" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T22" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T23" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T24" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W08">1</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T25" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T26" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T27" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_2" id="x_2">
+                <div id="x_2_text" class="text-center bold text-bg-success text_ visually-hidden p-1" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                <div id="X_2" class="text-center bold text-bg-danger p-1 visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-text pt-3">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T30" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T31" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T32" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T33" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T34" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W28">-j</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T35" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T36" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T37" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_3" id="x_3">
+                <div id="x_3_text" class="text-center bold text-bg-success text_ visually-hidden p-1" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                <div id="X_6" class="text-center bold text-bg-danger p-1 visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-text pt-1">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T40" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T41" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T42" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W08">1</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T43" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T44" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T45" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T46" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T47" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_4" id="x_4">
+                <div id="x_4_text" class="text-center bold text-bg-success text_ visually-hidden p-1" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                <div id="X_1" class="text-center bold text-bg-danger p-1 visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-text pt-2">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T50" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T51" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T52" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W18">$${\sqrt{2} \over 2} - j{\sqrt{2} \over 2}$$</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T53" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T54" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T55" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T56" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W08">1</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T57" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_5" id="x_5">
+                <div id="x_5_text" class="text-center bold text-bg-success text_ visually-hidden p-1" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                <div id="X_5" class="text-center bold text-bg-danger p-1 visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-text pt-2">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T60" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T61" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T62" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W28">-j</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T63" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T64" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W08">1</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T65" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T66" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T67" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_6" id="x_6">
+                <div id="x_6_text" class="text-center bold text-bg-success text_ visually-hidden p-1" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                <div id="X_3" class="text-center bold text-bg-danger p-1 visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-text pt-3">
+            <div class="row" style="height: 30px;">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T70" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T71" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T72" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W38">$${-\sqrt{2} \over 2} - j{\sqrt{2} \over 2}$$</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T73" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T74" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W28">-j</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T75" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T76" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0" style="margin-top: 20px;">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span class="tooltiptext W08">1</span>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div style="width: 10px;" class=" tooltip_">&nbsp;&nbsp;&nbsp;
+                          <span id="T77" class="tooltiptext"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex p-1 justify-content-between" style="margin-top: -5px;">
+              <div class="col-md-1">
+                <input type="number" class="form-control input_" name="x_7" id="x_7">
+                <div id="x_7_text" class="text-center bold text-bg-success text_ visually-hidden p-1" style="height: 37.7062px;"></div>
+              </div>
+              <div class="col-md-2">
+                <div id="X_7" class="text-center bold text-bg-danger p-1 visually-hidden" style="height: 37.7062px;"></div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <div class="row pt-3">
+          <div class="col-md-4">
+            <button type="button" class="btn btn-success" id="submit-btn">Submit</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" id="confirm-btn" class="visually-hidden">Confirm</button>
+            <button type="button" class="btn btn-danger visually-hidden" id="retry-btn">Retry</button>
+            <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+            <button type="button" class="btn btn-primary visually-hidden" id="new-btn" onclick="retry()">New</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- modal confirm -->
+    <div class="modal fade" id="confirm-modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h6>Compute with all input values ​​equal to 0?</h6>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="yes-btn">Yes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="no-btn">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright by <strong><span>Le Quang Nhue</span></strong>. All Rights Reserved
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/chart.js/chart.min.js"></script>
+  <script src="/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/assets/vendor/quill/quill.min.js"></script>
+  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/common/Utils.js"></script>
+  <script src="/assets/js/common/Authentication.js"></script>
+  <script src="/assets/js/common/Form.js"></script>
+  <script src="/assets/js/fft/freq-fft.js"></script>
+  <script src="/assets//js/user/logout.js"></script>
+</body>
+
+</html>

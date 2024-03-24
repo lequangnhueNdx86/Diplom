@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Home Page</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <main id="main" class="main" style="margin-left: 0;">
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+
+            <div class="col-xxl-12 col-md-12">
+              <div class="card info-card sales-card" style="background-color: rgb(127, 255, 212);">
+                <div class="card-body m-0 p-1 pb-0">
+                    <h5 class="row card-title p-lg-2 pt-0">
+                      <div class="col-2">Time FFT</div>
+                      <div class="col-8 text-center">Decimation in time radix-2 FFT algorithm</div>
+                      <div class="col-2"></div>
+                      </h5>               
+
+                  <div class="d-flex align-items-center p-0">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-clock"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 id="timeFftNum">-</h6>
+                    </div>
+                    <div class="ps-5 row">
+                      <div class="col-md-8 col-xl-10">
+                        Time-split 8-point FFT diagram: In an 8-point Fast Fourier Transform (FFT) diagram, the input time-domain signal is typically split into two groups of 4 points each for a radix-2 FFT algorithm. To see the diagram illustrating the time-split 8-point FFT process, click on the arrow.
+                      </div>
+                      <div class="col-md-4 col-xl-2 d-flex align-content-between justify-content-center">
+                        <a class="p-3 text-danger" href="./fft/time-fft.html"><span class="icon bi-arrow-right-circle fs-1"></span></a>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-12 col-md-12">
+              <div class="card info-card revenue-card" style="background-color: rgb(102,205,170);">
+                <div class="card-body m-0 p-1 pb-0">
+                  <h5 class="row card-title p-0 pt-2">
+                    <div class="col-2">Frequency FFT</div>
+                    <div class="col-8 text-center">Decimation in frequency radix-2 FFT algorithm</div>
+                    <div class="col-2"></div>
+                  </h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 id="freqFftNum">-</h6>
+                    </div>
+                    <div class="ps-5 row">
+                      <div class="col-md-8 col-xl-10">
+                        Frequency division 8-point FFT diagram: In an 8-point Fast Fourier Transform (FFT) diagram, the frequency division approach involves splitting the frequency domain into two groups of 4 points each. To see diagram illustrating the frequency division 8-point FFT process, click on the arrow.                      </div>
+                      <div class="col-md-4 col-xl-2 d-flex align-content-between justify-content-center">
+                        <a class="p-3 text-danger" href="./fft/freq-fft.html"><span class="icon bi-arrow-right-circle fs-1"></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-12 col-xl-12">
+
+              <div class="card info-card customers-card" style="background-color: rgb(175,238,238);">
+                <div class="card-body m-0 p-1 pb-0">
+                  <h5 class="row card-title p-0 pt-2">
+                    <div class="col-3">Finite Impulse Response Filter</div>
+                    <div class="col-6 text-center">Using of Fourier Transform in FIR </div>
+                    <div class="col-3"></div>
+                  </h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-filter-circle-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 id="dftNum">-</h6>
+                    </div>
+                    <div class="ps-5 row">
+                      <div class="col-md-8 col-xl-10">
+                        Suppose signal x(n) is the sum of two signals \(x_1\)(n) and \(x_2\)(n). 
+                        In which \(x_1\)(n) is a cosine signal with an angular frequency of \(ω_1\) rad/s, \(x_2\)(n) is also a cosine signal with an angular frequency of \(ω_2\) rad/s. 
+                        People use an FIR high/low pass filter with a pulse response length of 3 with the assumption h(0) = h(2) = α and h(1) = β to suppress the \(x_i\)(n) signal and give completely passes through signal  \(x_j\)(n).
+                      </div>
+                      <div class="col-md-4 col-xl-2 d-flex align-content-between justify-content-center">
+                        <a class="p-3 text-danger" href="./dft/dft.html"><span class="icon bi-arrow-right-circle fs-1"></span></a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-xxl-12 col-xl-12">
+
+              <div class="card info-card customers-card" style="background-color: rgb(64,224,208);">
+                <div class="card-body m-0 p-1 pb-0">
+                  <h5 class="row card-title p-0 pt-2">
+                    <div class="col-3">Noise Signal Processing</div>
+                    <div class="col-6 text-center">Using Fourier transform to filter noise</div>
+                    <div class="col-3"></div>
+                  </h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-filter-left"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 id="nspNum">-</h6>
+                    </div>
+                    <div class="ps-5 row">
+                      <div class="col-md-8 col-xl-10">
+                        A sine signal is disturbed by other noise signals, filtering the noise signal to obtain the original signal. To see a visual display of noise filtering, click on the arrow.                      </div>
+                      <div class="col-md-4 col-xl-2 d-flex align-content-between justify-content-center">
+                        <a class="p-3 text-danger" href="./nsp/nsp.html"><span class="icon bi-arrow-right-circle fs-1"></span></a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright by <strong><span>Le Quang Nhue</span></strong>. All Rights Reserved
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <!-- Jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/chart.js/chart.min.js"></script>
+  <script src="/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/assets/vendor/quill/quill.min.js"></script>
+  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/common/Utils.js"></script>
+  <script src="/assets/js/common/Authentication.js"></script>
+  <script src="/assets/js/index.js"></script>
+  <script src="/assets//js/user/logout.js"></script>
+
+</body>
+
+</html>
